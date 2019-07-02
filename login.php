@@ -1,7 +1,12 @@
 <?php
 
     class Login{
-        private $email,$senha;
+        private $email,$senha,$nome;
+        public function __construct($email,$senha,$nome){
+            $this->setEmail($email);
+            $this->setSenha($senha);
+            $this->setNome($nome);
+        }
 
         public function logar($email,$senha){
             if($this->email ==  $email && $this->senha == $senha):
@@ -22,22 +27,29 @@
             $this->senha = $s;
         }
 
+        public function  setNome($n){
+            $this->nome=  $n;
+        }
+
+        public function getSenha(){
+            return $this->senha;
+        }
 
         public function getEmail(){
             return $this->email;
 
         }
-        public function getSenha(){
-            return $this->senha;
+        public function getNome(){
+            return $this->nome;
         }
     }
 
 
 
     // main
-    $telaLogin = new Login();
-    $telaLogin->setEmail("teste/-a()@hotmail.com");
-    $telaLogin->setSenha("123456");
+    $telaLogin = new Login("teste/-a()@hotmail.com","123456","Luiz Carlos Costa Moitinho");
+
     $telaLogin->logar("teste@hotmail.com","123456");
-    echo $telaLogin->getEmail();
+    echo $telaLogin->getEmail()."<br>";
+    echo $telaLogin->getNome();
 ?>
